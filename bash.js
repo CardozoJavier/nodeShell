@@ -11,7 +11,7 @@ process.stdin.on('data', function (data) {
         commands.date();
     }
     if (cmd == 'ls') {
-        commands.ls();
+        commands.ls(data);
     }
     if((cmd.split(' ')[0])=='echo'){
         commands.echo(data);
@@ -25,6 +25,20 @@ process.stdin.on('data', function (data) {
     if((cmd.split(' ')[0])=='tail'){
         commands.tail(data);
     }
-    setTimeout(function(){process.stdout.write('\nprompt > ')},0);
+    if((cmd.split(' ')[0])=='wc'){
+        commands.wc(data);
+    }
+    if((cmd.split(' ')[0])=='sort'){
+        commands.sort(data);
+    }
+    if((cmd.split(' ')[0])=='uniq'){
+        commands.uniq(data);
+    }
+    if((cmd.split(' ')[0])=='curl'){
+        commands.uniq(data);
+    }
+    if((cmd.split(' ')[0])=='find'){
+        commands.find('','',data);
+    }    
+    process.stdout.write('\nprompt > ');
 });
-
